@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101d">
+  <title>GLOBAL | Welcome</title>
+  <meta name="description" content="Welcome to GLOBAL. Connect with our team on WhatsApp.">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at top right, #1b3049, #07101d 55%, #03070d);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      border-bottom: 1px solid #40351e;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      border: 3px solid #f3c766;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #f3c766;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    .brand h2 {
+      color: #f3c766;
+      letter-spacing: 4px;
+      font-size: 25px;
+    }
+
+    .brand p {
+      color: #c0c8d4;
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .contact-link {
+      color: #f3c766;
+      text-decoration: none;
+      border: 1px solid #b68a36;
+      padding: 10px 16px;
+      border-radius: 30px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 40px;
+      padding: 85px 0 65px;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #f3c766;
+      border: 1px solid #80652f;
+      border-radius: 30px;
+      padding: 9px 14px;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      margin: 25px 0 20px;
+    }
+
+    h1 span { color: #f3c766; }
+
+    .description {
+      color: #bac5d4;
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 530px;
+      margin-bottom: 28px;
+    }
+
+    .whatsapp {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 25px;
+      background: #16a34a;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 12px;
+      box-shadow: 0 8px 28px #16a34a35;
+      transition: .2s;
+    }
+
+    .whatsapp:hover {
+      background: #12833d;
+      transform: translateY(-2px);
+    }
+
+    .note {
+      margin-top: 14px;
+      color: #8996a8;
+      font-size: 12px;
+    }
+
+    .globe-area {
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+    }
+
+    .globe {
+      width: 250px;
+      height: 250px;
+      border: 2px solid #d8aa4c;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #f3c766;
+      font-size: 105px;
+      background: radial-gradient(circle at 35% 30%, #24334a, #07101d 70%);
+      box-shadow: 0 0 65px #f3c76615, inset 0 0 40px #f3c76612;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .feature {
+      padding: 25px;
+      border: 1px solid #3a3325;
+      background: #0c1929;
+      border-radius: 16px;
+    }
+
+    .feature .icon {
+      color: #f3c766;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 { margin-bottom: 10px; }
+
+    .feature p {
+      color: #bac5d4;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .contact-box {
+      border: 1px solid #69532c;
+      background: #111c2b;
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .contact-box h2 { margin-bottom: 10px; }
+    .gold { color: #f3c766; }
+
+    .contact-box p {
+      color: #bac5d4;
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid #40351e;
+      padding: 23px 0;
+      color: #8996a8;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 700px) {
+      .brand h2 { font-size: 20px; }
+      .brand p { font-size: 8px; letter-spacing: 1px; }
+      .logo { width: 45px; height: 45px; }
+      .contact-link { font-size: 12px; padding: 9px 11px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 45px 0;
+        gap: 25px;
+      }
+
+      .globe-area { min-height: 210px; }
+      .globe { width: 175px; height: 175px; font-size: 75px; }
+
+      .features { grid-template-columns: 1fr; }
+      .contact-box {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 23px;
+      }
+
+      .whatsapp { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <div class="brand">
+        <div class="logo" aria-label="GLOBAL globe logo">◎</div>
+        <div>
+          <h2>GLOBAL</h2>
+          <p>CONNECT • EXPLORE • DISCOVER</p>
+        </div>
+      </div>
+
+      <a class="contact-link"
+         href="https://wa.me/919288504203"
+         target="_blank"
+         rel="noopener noreferrer">
+        Contact Us ↗
+      </a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="tag">WELCOME TO GLOBAL</div>
+
+          <h1>
+            One Place.<br>
+            <span>More Possibilities.</span>
+          </h1>
+
+          <p class="description">
+            Want to know more about GLOBAL? Connect with our team
+            directly on WhatsApp for platform information and assistance.
+            We're just one message away.
+          </p>
+
+          <a class="whatsapp"
+             href="https://wa.me/919288504203"
+             target="_blank"
+             rel="noopener noreferrer">
+            <span style="font-size:24px">☏</span>
+            CHAT ON WHATSAPP
+            <span>→</span>
+          </a>
+
+          <p class="note">
+            Click the button to start a conversation with our team.
+          </p>
+        </div>
+
+        <div class="globe-area">
+          <div class="globe" aria-label="GLOBAL globe symbol">◎</div>
+        </div>
+      </section>
+
+      <section class="features">
+        <article class="feature">
+          <div class="icon">✦</div>
+          <h3>Direct Connection</h3>
+          <p>Contact our team directly to ask questions and get assistance.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">◇</div>
+          <h3>Easy Access</h3>
+          <p>A simple and user-friendly page for mobile and desktop users.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">↗</div>
+          <h3>Quick Contact</h3>
+          <p>Start a WhatsApp conversation with just one click.</p>
+        </article>
+      </section>
+
+      <section class="contact-box">
+        <div>
+          <h2>Connect with <span class="gold">GLOBAL</span></h2>
+          <p>Have a question? Send us a message on WhatsApp.</p>
+        </div>
+
+        <a class="whatsapp"
+           href="https://wa.me/919288504203"
+           target="_blank"
+           rel="noopener noreferrer">
+          Message Us ↗
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> GLOBAL. All rights reserved.</span>
+      <span>Official Contact • WhatsApp</span>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
