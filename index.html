@@ -19,15 +19,15 @@
     }
 
     .container {
-      width: min(1100px, 90%);
+      width: min(420px, 90%);
       margin: auto;
     }
 
     header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 22px 0;
+      justify-content: center;
+      padding: 18px 0;
       border-bottom: 1px solid #40351e;
     }
 
@@ -57,12 +57,7 @@
       font-size: 25px;
     }
 
-    .brand p {
-      color: #c0c8d4;
-      font-size: 10px;
-      letter-spacing: 2px;
-      margin-top: 4px;
-    }
+    .brand p { display: none; }
 
     .contact-link {
       color: #f3c766;
@@ -73,12 +68,21 @@
     }
 
     .hero {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
+      display: flex;
+      flex-direction: column-reverse;
       align-items: center;
-      gap: 40px;
-      padding: 85px 0 65px;
+      text-align: center;
+      gap: 10px;
+      padding: 26px 0 30px;
     }
+    .hero > div:first-child { width: 100%; }
+    .description { margin: 0 auto 22px; font-size: 15px; line-height: 1.65; }
+    h1 { font-size: clamp(30px, 8.5vw, 40px); margin: 17px 0 16px; line-height: 1.12; }
+    .tag { font-size: 10px; padding: 7px 12px; letter-spacing: 1.5px; }
+    .globe-area { min-height: 0; margin-bottom: 8px; }
+    .globe { width: 148px; }
+    .whatsapp { width: 100%; padding: 16px 14px; font-size: 15px; border-radius: 11px; }
+    .note { margin-top: 10px; font-size: 11px; }
 
     .tag {
       display: inline-block;
@@ -240,15 +244,15 @@
     }
 
     @media (max-width: 700px) {
-      .brand h2 { font-size: 20px; }
+      .brand h2 { font-size: 23px; letter-spacing: 5px; }
       .brand p { font-size: 8px; letter-spacing: 1px; }
       .logo { width: 46px; height: 46px; } .logo svg { width: 35px; height: 35px; }
       .contact-link { font-size: 12px; padding: 9px 11px; }
 
       .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding: clamp(36px, 9vw, 54px) 0;
-        gap: 20px;
+        flex-direction: column-reverse;
+        padding: 24px 0 28px;
+        gap: 8px;
       }
       h1 { font-size: clamp(34px, 10vw, 52px); overflow-wrap: anywhere; }
       .description { font-size: 16px; line-height: 1.75; }
@@ -258,8 +262,8 @@
       .brand h2 { letter-spacing: 3px; }
       .contact-link { white-space: nowrap; }
 
-      .globe-area { min-height: 190px; }
-      .globe { width: min(190px, 58vw); }
+      .globe-area { min-height: 0; margin-bottom: 8px; }
+      .globe { width: min(148px, 42vw); }
 
       .features { grid-template-columns: 1fr; }
       .contact-box {
@@ -280,11 +284,16 @@
       <div class="brand">
         <div class="logo" aria-label="GLOBAL globe logo">
           <svg viewBox="0 0 100 100" role="img" aria-hidden="true">
-            <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="2.5"/>
-            <ellipse cx="50" cy="50" rx="19" ry="43" fill="none" stroke="currentColor" stroke-width="2"/>
-            <ellipse cx="50" cy="50" rx="43" ry="17" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M10 36 Q50 48 90 36 M10 64 Q50 52 90 64" fill="none" stroke="currentColor" stroke-width="1.7"/>
-            <path d="M50 7 V93" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".65"/>
+            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M61 22 L72 28 L43 72 Q39 77 34 73 Q30 69 34 64 Z" fill="currentColor" fill-opacity=".16" stroke-width="2.5"/>
+              <path d="M61 22 L67 17 L78 23 L72 28 Z" fill="currentColor" fill-opacity=".3" stroke-width="2"/>
+              <path d="M27 37 V71 M35 34 V71 M43 37 V71" fill="none" stroke-width="3.2"/>
+              <path d="M25 34 L29 34 M33 31 L37 31 M41 34 L45 34" fill="none" stroke-width="2.4"/>
+              <circle cx="69" cy="66" r="8" fill="#d94b45" stroke="#f3c766" stroke-width="1.8"/>
+              <path d="M64 61 Q70 66 73 72" fill="none" stroke="#fff0cc" stroke-width="1.3"/>
+              <path d="M18 79 Q50 91 82 79" fill="none" stroke-width="1.8" opacity=".8"/>
+            </g>
           </svg>
         </div>
         <div>
@@ -293,12 +302,6 @@
         </div>
       </div>
 
-      <a class="contact-link"
-         href="https://wa.me/919288504203?text=Hello%20GLOBAL%2C%20I%20want%20to%20get%20my%20ID.%20Please%20guide%20me."
-         target="_blank"
-         rel="noopener noreferrer">
-        Contact Us ↗
-      </a>
     </header>
 
     <main>
@@ -311,9 +314,7 @@
           </h1>
 
           <p class="description">
-            Want to know more about GLOBAL? Connect with our team
-            directly on WhatsApp for platform information and assistance.
-            We're just one message away.
+            Tap the WhatsApp button below to contact GLOBAL and get your ID.
           </p>
 
           <a class="whatsapp"
@@ -326,62 +327,29 @@
           </a>
 
           <p class="note">
-            Click the button to start a conversation with our team.
+            Tap WhatsApp to message us.
           </p>
         </div>
 
         <div class="globe-area">
           <div class="globe" aria-label="GLOBAL globe symbol">
             <svg viewBox="0 0 100 100" role="img" aria-hidden="true">
-              <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="1.7"/>
-              <ellipse cx="50" cy="50" rx="20" ry="43" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <ellipse cx="50" cy="50" rx="43" ry="17" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M10 36 Q50 48 90 36 M10 64 Q50 52 90 64" fill="none" stroke="currentColor" stroke-width="1.3"/>
-              <path d="M7 50 H93" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
+              <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M58 14 L69 20 L39 67 Q35 72 30 68 Q26 64 30 59 Z" fill="currentColor" fill-opacity=".16" stroke-width="2.5"/>
+                <path d="M58 14 L64 9 L75 15 L69 20 Z" fill="currentColor" fill-opacity=".3" stroke-width="2"/>
+                <path d="M23 31 V70 M32 28 V70 M41 31 V70" fill="none" stroke-width="3.4"/>
+                <path d="M21 28 L25 28 M30 25 L34 25 M39 28 L43 28" fill="none" stroke-width="2.5"/>
+                <circle cx="69" cy="65" r="10" fill="#d94b45" stroke="#f3c766" stroke-width="2"/>
+                <path d="M63 59 Q70 65 74 73" fill="none" stroke="#fff0cc" stroke-width="1.6"/>
+                <path d="M13 82 Q50 93 87 82" fill="none" stroke-width="2" opacity=".75"/>
+              </g>
             </svg>
           </div>
         </div>
       </section>
 
-      <section class="features">
-        <article class="feature">
-          <div class="icon">✦</div>
-          <h3>Direct Connection</h3>
-          <p>Contact our team directly to ask questions and get assistance.</p>
-        </article>
-
-        <article class="feature">
-          <div class="icon">◇</div>
-          <h3>Easy Access</h3>
-          <p>A simple and user-friendly page for mobile and desktop users.</p>
-        </article>
-
-        <article class="feature">
-          <div class="icon">↗</div>
-          <h3>Quick Contact</h3>
-          <p>Start a WhatsApp conversation with just one click.</p>
-        </article>
-      </section>
-
-      <section class="contact-box">
-        <div>
-          <h2>Ready to get your <span class="gold">GLOBAL ID?</span></h2>
-          <p>Message our team on WhatsApp to get started.</p>
-        </div>
-
-        <a class="whatsapp"
-           href="https://wa.me/919288504203?text=Hello%20GLOBAL%2C%20I%20want%20to%20get%20my%20ID.%20Please%20guide%20me."
-           target="_blank"
-           rel="noopener noreferrer">
-          GET YOUR ID ↗
-        </a>
-      </section>
     </main>
 
-    <footer>
-      <span>© <span id="year"></span> GLOBAL. All rights reserved.</span>
-      <span>Official Contact • WhatsApp</span>
-    </footer>
 
   </div>
 
