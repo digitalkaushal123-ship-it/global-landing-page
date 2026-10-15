@@ -38,16 +38,18 @@
     }
 
     .logo {
-      width: 54px;
-      height: 54px;
-      border: 3px solid #f3c766;
+      width: 58px;
+      height: 58px;
+      border: 1px solid rgba(243,199,102,.9);
       border-radius: 50%;
       display: grid;
       place-items: center;
       color: #f3c766;
-      font-size: 27px;
-      font-weight: bold;
+      background: radial-gradient(circle at 30% 25%, #263b53, #08111e 72%);
+      box-shadow: 0 0 22px rgba(243,199,102,.16), inset 0 0 14px rgba(243,199,102,.08);
+      flex: 0 0 auto;
     }
+    .logo svg { width: 43px; height: 43px; display: block; filter: drop-shadow(0 0 5px rgba(243,199,102,.35)); }
 
     .brand h2 {
       color: #f3c766;
@@ -138,17 +140,28 @@
     }
 
     .globe {
-      width: 250px;
-      height: 250px;
-      border: 2px solid #d8aa4c;
+      width: min(280px, 70vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(243,199,102,.9);
       border-radius: 50%;
       display: grid;
       place-items: center;
       color: #f3c766;
-      font-size: 105px;
-      background: radial-gradient(circle at 35% 30%, #24334a, #07101d 70%);
-      box-shadow: 0 0 65px #f3c76615, inset 0 0 40px #f3c76612;
+      background: radial-gradient(circle at 35% 25%, #293e57 0%, #101e30 52%, #07101d 78%);
+      box-shadow: 0 0 75px rgba(243,199,102,.12), inset 0 0 42px rgba(243,199,102,.08);
+      animation: globeFloat 6s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
     }
+    .globe::before {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border: 1px solid rgba(243,199,102,.38);
+      border-radius: 50%;
+      transform: rotate(-24deg) scaleX(.46);
+    }
+    .globe svg { width: 68%; height: 68%; overflow: visible; filter: drop-shadow(0 0 9px rgba(243,199,102,.28)); }
 
     .features {
       display: grid;
@@ -209,20 +222,44 @@
       flex-wrap: wrap;
     }
 
+    /* Polished motion and touch-friendly responsive layout */
+    body { overflow-x: hidden; }
+    header, .hero, .feature, .contact-box { animation: fadeUp .75s ease both; }
+    .hero { animation-delay: .08s; }
+    .globe-area { animation: fadeUp .9s .12s ease both; }
+    .feature { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .feature:hover { transform: translateY(-5px); border-color: rgba(243,199,102,.65); box-shadow: 0 12px 30px rgba(0,0,0,.18); }
+    .contact-link { transition: background .2s ease, box-shadow .2s ease, transform .2s ease; }
+    .contact-link:hover { background: rgba(243,199,102,.1); box-shadow: 0 0 18px rgba(243,199,102,.12); transform: translateY(-1px); }
+    .whatsapp { transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+    .whatsapp:hover { box-shadow: 0 10px 34px rgba(22,163,74,.28); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes globeFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+
     @media (max-width: 700px) {
       .brand h2 { font-size: 20px; }
       .brand p { font-size: 8px; letter-spacing: 1px; }
-      .logo { width: 45px; height: 45px; }
+      .logo { width: 46px; height: 46px; } .logo svg { width: 35px; height: 35px; }
       .contact-link { font-size: 12px; padding: 9px 11px; }
 
       .hero {
-        grid-template-columns: 1fr;
-        padding: 45px 0;
-        gap: 25px;
+        grid-template-columns: minmax(0, 1fr);
+        padding: clamp(36px, 9vw, 54px) 0;
+        gap: 20px;
       }
+      h1 { font-size: clamp(34px, 10vw, 52px); overflow-wrap: anywhere; }
+      .description { font-size: 16px; line-height: 1.75; }
+      .container { width: min(1100px, 90%); }
+      header { gap: 12px; }
+      .brand { min-width: 0; gap: 9px; }
+      .brand h2 { letter-spacing: 3px; }
+      .contact-link { white-space: nowrap; }
 
-      .globe-area { min-height: 210px; }
-      .globe { width: 175px; height: 175px; font-size: 75px; }
+      .globe-area { min-height: 190px; }
+      .globe { width: min(190px, 58vw); }
 
       .features { grid-template-columns: 1fr; }
       .contact-box {
@@ -241,7 +278,15 @@
 
     <header>
       <div class="brand">
-        <div class="logo" aria-label="GLOBAL globe logo">◎</div>
+        <div class="logo" aria-label="GLOBAL globe logo">
+          <svg viewBox="0 0 100 100" role="img" aria-hidden="true">
+            <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <ellipse cx="50" cy="50" rx="19" ry="43" fill="none" stroke="currentColor" stroke-width="2"/>
+            <ellipse cx="50" cy="50" rx="43" ry="17" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 36 Q50 48 90 36 M10 64 Q50 52 90 64" fill="none" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M50 7 V93" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".65"/>
+          </svg>
+        </div>
         <div>
           <h2>GLOBAL</h2>
           <p>CONNECT • EXPLORE • DISCOVER</p>
@@ -249,7 +294,7 @@
       </div>
 
       <a class="contact-link"
-         href="https://wa.me/919288504203"
+         href="https://wa.me/919288504203?text=Hello%20GLOBAL%2C%20I%20want%20to%20get%20my%20ID.%20Please%20guide%20me."
          target="_blank"
          rel="noopener noreferrer">
         Contact Us ↗
@@ -272,7 +317,7 @@
           </p>
 
           <a class="whatsapp"
-             href="https://wa.me/919288504203"
+             href="https://wa.me/919288504203?text=Hello%20GLOBAL%2C%20I%20want%20to%20get%20my%20ID.%20Please%20guide%20me."
              target="_blank"
              rel="noopener noreferrer">
             <span style="font-size:24px">☏</span>
@@ -286,7 +331,15 @@
         </div>
 
         <div class="globe-area">
-          <div class="globe" aria-label="GLOBAL globe symbol">◎</div>
+          <div class="globe" aria-label="GLOBAL globe symbol">
+            <svg viewBox="0 0 100 100" role="img" aria-hidden="true">
+              <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" stroke-width="1.7"/>
+              <ellipse cx="50" cy="50" rx="20" ry="43" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <ellipse cx="50" cy="50" rx="43" ry="17" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 36 Q50 48 90 36 M10 64 Q50 52 90 64" fill="none" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M7 50 H93" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".7"/>
+            </svg>
+          </div>
         </div>
       </section>
 
@@ -317,7 +370,7 @@
         </div>
 
         <a class="whatsapp"
-           href="https://wa.me/919288504203"
+           href="https://wa.me/919288504203?text=Hello%20GLOBAL%2C%20I%20want%20to%20get%20my%20ID.%20Please%20guide%20me."
            target="_blank"
            rel="noopener noreferrer">
           GET YOUR ID ↗
